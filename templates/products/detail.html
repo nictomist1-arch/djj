@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Изображение товара -->
+        <div class="col-md-6">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="img-fluid product-image" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'images/no-image.png' %}" class="img-fluid product-image" alt="Нет изображения">
+            {% endif %}
+        </div>
+        
+        <!-- Информация о товаре -->
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <p class="text-muted">Категория: {{ product.category.name }}</p>
+            
+            <div class="mb-4">
+                <h2 class="text-primary">{{ product.price }} ₽</h2>
+                <p class="{% if product.available %}text-success{% else %}text-danger{% endif %}">
+                    {% if product.available %}В наличии{% else %}Нет в наличии{% endif %}
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h4>Описание:</h4>
+                <p>{{ product.description|linebreaks }}</p>
+            </div>
+            
+            {% if product.available %}
+            <div class="d-grid gap-2 d-md-flex">
+                <form action="{% url 'cart_add' product.id %}" method="post" class="me-2">
+                    {% csrf_token %}
+                    <div class="input-group mb-3" style="max-width: 200px;">
+                        <input type="number" name="quantity" value="1" min="1" max="10" class="form-control">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-cart-plus"></i> В корзину
+                        </button>
+                    </div>
+                </form>
+                
+                <a href="{% url 'product_list' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Назад к товарам
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

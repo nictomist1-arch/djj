@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина покупок{% endblock %}
+
+{% block content %}
+    <h1>Ваша корзина</h1>
+
+    {% if cart %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Количество</th>
+                    <th>Цена за единицу</th>
+                    <th>Общая цена</th>
+                    <th>Удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                {% with product=item.product %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }} руб.</td>
+                    <td>{{ item.total_price }} руб.</td>
+                    <td>
+                        <form action="{% url 'cart_remove' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endwith %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Итого:</strong></td>
+                    <td colspan="2"><strong>{{ cart.get_total_price }} руб.</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">Продолжить покупки</a>
+            <a href="{% url 'order_create' %}" class="btn btn-success">Оформить заказ</a>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <p>Ваша корзина пуста.</p>
+        </div>
+        <a href="{% url 'product_list' %}" class="btn btn-primary">Начать покупки</a>
+    {% endif %}
+{% endblock %}
