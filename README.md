@@ -1,55 +1,36 @@
-🛒 Django Shop - Интернет-магазин
+# 🛒 Django Shop - Интернет-магазин на Django
 
-https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django&logoColor=white
-https://img.shields.io/badge/Bootstrap-5.1-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white
-https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white
-https://img.shields.io/badge/License-MIT-blue?style=for-the-badge
+![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 Современный интернет-магазин на Django с темной темой и адаптивным дизайном.
-✨ Особенности
 
-    🎨 Темная тема - современный дизайн с фиолетовыми акцентами
+## ✨ Особенности
 
-    📱 Полностью адаптивный - оптимизирован для всех устройств
+- 🎨 **Темная тема** - современный дизайн с фиолетовыми акцентами
+- 📱 **Полностью адаптивный** - оптимизирован для всех устройств
+- 🛒 **Корзина покупок** - с подсчетом товаров и общей суммы
+- 👤 **Система аутентификации** - регистрация, вход, выход
+- 📂 **Категории товаров** - удобная навигация по продуктам
+- 🔍 **Детальные страницы товаров** - с сохранением оригинальных изображений
+- ⚡ **Оптимизированная производительность** - быстрая загрузка страниц
+- 🎭 **Плавные анимации** - улучшенный пользовательский опыт
 
-    🛒 Корзина покупок - с подсчетом товаров и общей суммы
+## 🚀 Быстрый старт
 
-    👤 Система аутентификации - регистрация, вход, выход
+### Предварительные требования
 
-    📂 Категории товаров - удобная навигация по продуктам
+- Python 3.8 или выше
+- Django 4.2 или выше
+- pip (менеджер пакетов Python)
 
-    🔍 Детальные страницы товаров - с сохранением оригинальных изображений
+### Установка
 
-    ⚡ Оптимизированная производительность - быстрая загрузка страниц
-
-    🎭 Плавные анимации - улучшенный пользовательский опыт
-
-📸 Скриншоты
-Главная страница
-
-https://screenshots/home.png
-Страница товара
-
-https://screenshots/product-detail.png
-Корзина
-
-https://screenshots/cart.png
-🚀 Быстрый старт
-Предварительные требования
-
-    Python 3.8 или выше
-
-    Django 4.2 или выше
-
-    pip (менеджер пакетов Python)
-
-Установка
-
-    Клонируйте репозиторий
-
-bash
-
-git clone https://github.com/ваш-username/django-shop.git
+1. **Клонируйте репозиторий**
+```bash
+git clone https://github.com/your-username/django-shop.git
 cd django-shop
 
     Создайте виртуальное окружение
@@ -65,7 +46,7 @@ venv\Scripts\activate     # Для Windows
 
 bash
 
-pip install django pillow
+pip install -r requirements.txt
 
     Настройте базу данных
 
@@ -104,45 +85,63 @@ django-shop/
 │   ├── urls.py
 │   └── wsgi.py
 ├── products/
-│   ├── models.py          # Модели Product, Category
-│   ├── views.py           # Представления для товаров
-│   ├── urls.py           # URL-маршруты товаров
-│   └── templates/        # Шаблоны товаров
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│       └── products/
+│           ├── product_list.html
+│           └── product_detail.html
 ├── cart/
-│   ├── models.py         # Модель Cart
-│   ├── views.py          # Представления корзины
-│   ├── context_processors.py # Контекстный процессор
-│   └── urls.py           # URL-маршруты корзины
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── context_processors.py
+│   └── templates/
+│       └── cart/
+│           └── cart_detail.html
 ├── accounts/
-│   ├── views.py          # Регистрация, вход, выход
-│   └── urls.py           # URL-маршруты аутентификации
-└── static/
-    └── css/             # Пользовательские стили
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│       └── registration/
+│           ├── login.html
+│           └── register.html
+└── templates/
+    └── base.html
 
 🎨 Дизайн и CSS
-
-Проект использует кастомную темную тему с следующими особенностями:
 Цветовая палитра
-css
 
---primary-color: #8a2be2;      /* Основной фиолетовый */
---secondary-color: #9d4edd;    /* Вторичный фиолетовый */
---accent-color: #ff6b6b;       /* Акцентный красный */
---dark-color: #f8f9fa;         /* Светлый текст */
---card-bg: #1e1e1e;           /* Фон карточек */
---background: #0a0a0a;        /* Основной фон */
+    Основной фиолетовый: #8a2be2
+
+    Вторичный фиолетовый: #9d4edd
+
+    Акцентный красный: #ff6b6b
+
+    Фон карточек: #1e1e1e
+
+    Основной фон: #0a0a0a
 
 Особенности дизайна
 
-    Градиенты: Плавные переходы цветов в навигации и кнопках
+    Градиенты для навигации и кнопок
 
-    Тени: Многослойные тени для глубины
+    Многослойные тени для глубины
 
-    Скругления: Современные скругления углов (12px)
+    Современные скругления углов (12px)
 
-    Анимации: Плавные переходы при наведении
+    Плавные анимации при наведении
 
-    Типографика: Оптимизированная для чтения в темной теме
+    Черный фон для изображений
 
 🛠 Технологии
 Backend
@@ -161,167 +160,80 @@ Frontend
 
     Кастомный CSS - темная тема и анимации
 
-    Vanilla JavaScript - интерактивность
-
-База данных
-
-    SQLite (по умолчанию, для разработки)
-
-    Поддерживается PostgreSQL, MySQL
+    JavaScript - интерактивность
 
 📦 Модели данных
-Product
+Product (продукт)
 python
 
 class Product(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='products/')
+    name = models.CharField(max_length=200, verbose_name="Название")
+    slug = models.SlugField(max_length=200, unique=True)
+    description = models.TextField(verbose_name="Описание")
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория")
+    image = models.ImageField(upload_to='products/%Y/%m/%d/', verbose_name="Изображение")
+    available = models.BooleanField(default=True, verbose_name="Доступен")
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
-Category
+Category (категория)
 python
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=100, verbose_name="Название")
+    slug = models.SlugField(max_length=100, unique=True)
+    
+    def get_absolute_url(self):
+        return reverse('products_by_category', args=[self.slug])
 
-Cart
+Cart (корзина)
 python
 
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    added = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 🔧 Настройка
+requirements.txt
+text
+
+Django>=4.2
+Pillow>=10.0.0
+
 Конфигурация settings.py
 python
 
-# Основные настройки
-DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# Настройки приложений
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'products',
+    'cart',
+    'accounts',
+]
 
-# Настройки базы данных
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# Настройки медиа файлов
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Настройки статических файлов
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-Контекстные процессоры
-python
-
-# settings.py
+# Контекстные процессоры
 TEMPLATES = [
     {
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
                 'products.context_processors.categories',
             ],
         },
     },
 ]
-
-🚀 Развертывание
-Для продакшена
-
-    Настройте базу данных PostgreSQL
-
-python
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_shop',
-        'USER': 'your_user',
-        'PASSWORD': 'your_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-    Соберите статические файлы
-
-bash
-
-python manage.py collectstatic
-
-    Настройте Gunicorn и Nginx
-
-bash
-
-# Установите Gunicorn
-pip install gunicorn
-
-# Запустите через Gunicorn
-gunicorn --workers 3 shop.wsgi:application
-
-📱 Адаптивность
-
-Проект полностью адаптивен:
-
-    Мобильные устройства: Упрощенная навигация, оптимизированные карточки
-
-    Планшеты: Адаптивные сетки, удобные размеры элементов
-
-    Десктоп: Полнофункциональный интерфейс с анимациями
-
-🔗 Маршруты (URLs)
-text
-
-/                       - Главная страница, список товаров
-/categories/<slug>/     - Товары по категории
-/products/<id>/         - Детальная страница товара
-/cart/                  - Корзина покупок
-/cart/add/<id>/         - Добавить в корзину
-/cart/remove/<id>/      - Удалить из корзины
-/login/                 - Вход в систему
-/register/              - Регистрация
-/logout/                - Выход
-/admin/                 - Административная панель
-
-🤝 Вклад в проект
-
-    Форкните репозиторий
-
-    Создайте ветку для функции (git checkout -b feature/AmazingFeature)
-
-    Зафиксируйте изменения (git commit -m 'Add some AmazingFeature')
-
-    Запушьте в ветку (git push origin feature/AmazingFeature)
-
-    Откройте Pull Request
-
-📄 Лицензия
-
-Этот проект распространяется под лицензией MIT. Подробнее см. в файле LICENSE.
-👥 Авторы
-
-    Ваше Имя - GitHub профиль
-
-🙏 Благодарности
-
-    Django Documentation
-
-    Bootstrap
-
-    Bootstrap Icons
-
-    Сообщество Django за полезные материалы и поддержку
-
-📞 Поддержка
-
-Если у вас есть вопросы или предложения, создайте issue в репозитории.
-
-⭐ Если вам нравится этот проект, поставьте звезду на GitHub!
